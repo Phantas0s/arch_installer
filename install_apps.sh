@@ -52,6 +52,7 @@ It will take some time.\n\n " \
 c=0
 echo "$install" | while read -r line; do
     c=$(( "$c" + 1 ))
+    echo "$line" > /tmp/test
 
     dialog --title "Arch Linux Installation" --infobox \
     "Downloading and installing program $c out of $count: $line..." \
