@@ -36,11 +36,11 @@ choices=$(cat app_choices) && rm app_choices
 selection="^$(echo $choices | sed -e 's/ /,|^/g'),"
 lines=$(grep -E "$selection" "$apps_path")
 count=$(echo "$lines" | wc -l)
-apps=$(echo "$lines" | awk -F, {'print $2'})
+install=$(echo "$lines" | awk -F, {'print $2'})
 
 echo "$selection" "$lines" "$count" >> "/tmp/packages"
 
-pacman -Syu --noconfirm
+pacman -Syu --noconfirm >> /
 
 rm -f /tmp/aur_queue
 
@@ -50,7 +50,7 @@ It will take some time.\n\n " \
 13 60
 
 c=0
-echo "$apps" | while read -r line; do
+echo "$install" | while read -r line; do
     c=$(( "$c" + 1 ))
 
     dialog --title "Arch Linux Installation" --infobox \
