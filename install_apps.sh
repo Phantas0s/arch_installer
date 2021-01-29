@@ -8,7 +8,7 @@ curl https://raw.githubusercontent.com/<your_github_user_name>\
 
 dialog --title "Welcome!" \
 --msgbox "Welcome to the install script for your apps and dotfiles!" \
-    10 60
+10 60
 
 # Allow the user to select the group of packages he (or she) wants to install.
 apps=("essential" "Essentials" on
@@ -40,7 +40,7 @@ packages=$(echo "$lines" | awk -F, {'print $2'})
 
 echo "$selection" "$lines" "$count" >> "/tmp/packages"
 
-pacman -Syu --noconfirm >> /
+pacman -Syu --noconfirm > "/tmp/update"
 
 rm -f /tmp/aur_queue
 
