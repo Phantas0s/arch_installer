@@ -31,7 +31,9 @@ aur_check yay
 count=$(wc -l < /tmp/aur_queue)
 c=0
 
-cat /tmp/aur_queue | while read -r line
+# TODO to delete
+cp /tmp/aur_queue /home/$(whoami)
+echo "/tmp/aur_queue" | while read -r line
 do
     c=$(( "$c" + 1 ))
     dialog --infobox \
