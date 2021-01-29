@@ -3,7 +3,7 @@
 name=$(cat /tmp/user_name)
 
 apps_path="/tmp/apps.csv"
-curl https://raw.githubusercontent.com/<your_github_user_name>\
+curl https://raw.githubusercontent.com/Phantas0s\
 /arch_installer/master/apps.csv > $apps_path
 
 dialog --title "Welcome!" \
