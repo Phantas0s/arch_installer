@@ -36,7 +36,7 @@ choices=$(cat app_choices) && rm app_choices
 selection="^$(echo $choices | sed -e 's/ /,|^/g'),"
 lines=$(grep -E "$selection" "$apps_path")
 count=$(echo "$lines" | wc -l)
-install=$(echo "$lines" | awk -F, {'print $2'})
+packages=$(echo "$lines" | awk -F, {'print $2'})
 
 echo "$selection" "$lines" "$count" >> "/tmp/packages"
 
@@ -50,7 +50,7 @@ It will take some time.\n\n " \
 13 60
 
 c=0
-echo "$install" | while read -r line; do
+echo "$packages" | while read -r line; do
     c=$(( "$c" + 1 ))
     echo "$line" > /tmp/test
 
