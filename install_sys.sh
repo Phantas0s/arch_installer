@@ -1,6 +1,6 @@
 #!/bin/bash
 
-pacman -Sy
+pacman -Syu --noconfirm
 pacman --noconfirm -S dialog
 
 timedatectl set-ntp true
@@ -9,11 +9,13 @@ timedatectl set-ntp true
 dialog --defaultno --title "Are you sure?" --yesno \
 "This is my personnal arch linux install. \n\n\
 It will just DESTROY EVERYTHING on the hard disk of your choice. \n\n\
-Don't say YES if you are not sure about what your are doing! \n\n\
+Don't say YES if you are not sure about what you're doing! \n\n\
 Are you sure?" 15 60 || exit
 
 dialog --no-cancel --inputbox "Enter a name for your computer." \
     10 60 2> comp
+
+comp=$(cat comp) && rm comp
 
 # Verify boot (UEFI or BIOS)
 uefi=0
@@ -38,7 +40,7 @@ dialog --no-cancel --inputbox \
 The boot partition will be 512M \n\
 The root partition will be the remaining of the hard disk \n\n\
 Enter below the partition size (in Gb) for the Swap. \n\n\
-If you dont enter anything, it will default to ${default_size}G. \n" \
+If you don't enter anything, it will default to ${default_size}G. \n" \
 20 60 2> swap_size
 
 size=$(cat swap_size) && rm swap_size

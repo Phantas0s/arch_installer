@@ -3,12 +3,14 @@
 name=$(cat /tmp/user_name)
 
 apps_path="/tmp/apps.csv"
+
+# Don't forget to replace "Phantas0s" by the username of your Github account
 curl https://raw.githubusercontent.com/Phantas0s\
 /arch_installer/master/apps.csv > $apps_path
 
 dialog --title "Welcome!" \
 --msgbox "Welcome to the install script for your apps and dotfiles!" \
-10 60
+    10 60
 
 # Allow the user to select the group of packages he (or she) wants to install.
 apps=("essential" "Essentials" on
@@ -41,7 +43,7 @@ packages=$(echo "$lines" | awk -F, {'print $2'})
 
 echo "$selection" "$lines" "$count" >> "/tmp/packages"
 
-pacman -Syu --noconfirm > "/tmp/update"
+pacman -Syu --noconfirm
 
 rm -f /tmp/aur_queue
 
@@ -53,7 +55,6 @@ It will take some time.\n\n " \
 c=0
 echo "$packages" | while read -r line; do
     c=$(( "$c" + 1 ))
-    echo "$line" > /tmp/test
 
     dialog --title "Arch Linux Installation" --infobox \
     "Downloading and installing program $c out of $count: $line..." \
@@ -75,6 +76,7 @@ done
 
 echo "%wheel ALL=(ALL) ALL" >> /etc/sudoers
 
+# Don't forget to replace "Phantas0s" by the username of your Github account
 curl https://raw.githubusercontent.com/Phantas0s\
 /arch_installer/master/install_user.sh > /tmp/install_user.sh;
 
