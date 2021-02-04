@@ -75,6 +75,7 @@ echo "$packages" | while read -r line; do
 done
 
 echo "%wheel ALL=(ALL) ALL" >> /etc/sudoers
+echo "Defaults !tty_tickets" >> /etc/sudoers
 
 # Don't forget to replace "Phantas0s" by the username of your Github account
 curl https://raw.githubusercontent.com/Phantas0s\
