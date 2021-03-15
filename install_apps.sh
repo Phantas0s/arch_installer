@@ -71,9 +71,8 @@ echo "$packages" | while read -r line; do
 
     # Uncomment to set the keymap you want. Replace "fr" by your country code
     if [ "$line" = "xorg" ]; then
-        localectl set-keymap --no-convert fr
+        localectl --no-convert set-x11-keymap fr
     fi
-
 
     if [ "$line" = "networkmanager" ]; then
         systemctl enable NetworkManager.service
