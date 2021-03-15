@@ -74,10 +74,10 @@ echo "$packages" | while read -r line; do
         localectl set-keymap fr-latin1
     fi
 
-    # Uncomment to set the keymap you want
-    # if [ "$line" = "xorg" ]; then
-    # localectl set-keymap --no-convert <keymap>
-    # fi
+    # Uncomment to set the keymap you want. Replace "fr" by your country code
+    if [ "$line" = "xorg" ]; then
+        localectl set-keymap --no-convert fr
+    fi
 
 
     if [ "$line" = "networkmanager" ]; then

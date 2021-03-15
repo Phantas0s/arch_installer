@@ -31,6 +31,9 @@ echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen
 locale-gen
 echo "LANG=en_US.UTF-8" > /etc/locale.conf
 
+# Set the keymap layout - replace "fr-latin1" by the keyboard layout you want
+echo "KEYMAP=fr-latin1" >> /etc/vconsole.conf
+
 # No argument: ask for a username.
 # One argument: use the username passed as argument.
 function config_user() {
