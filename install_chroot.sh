@@ -30,7 +30,6 @@ timedatectl set-timezone "Europe/Berlin"
 echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen
 locale-gen
 echo "LANG=en_US.UTF-8" > /etc/locale.conf
-localectl set-keymap fr-latin1
 
 # No argument: ask for a username.
 # One argument: use the username passed as argument.
