@@ -1,4 +1,4 @@
-# arch_installer
+# Basic Installer for Arch
 
 This is the installer I help to build in my book, [Building Your Mouseless Development Environment](https://themouseless.dev).
 
