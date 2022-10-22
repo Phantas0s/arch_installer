@@ -114,11 +114,19 @@ partprobe "$hd"
 # Add a suffix "p" in case with have a NVMe controller chip
 echo "$hd" | grep -E 'nvme' &> /dev/null && hd="${hd}p"
 
+# Partition
+cryptsetup luksFormat "${hd}3"
+cryptsetup open "${hd}3" root
+
 # Format the partitions
 mkswap "${hd}2"
 swapon "${hd}2"
-mkfs.ext4 "${hd}3"
-mount "${hd}3" /mnt
+
+# mkfs.ext4 "${hd}3"
+mkfs.ext4 /dev/mapper/root
+
+# mount "${hd}3" /mnt
+mount /dev/mapper/root /mnt
 
 if [ "$uefi" = 1 ]; then
     mkfs.fat -F32 "${hd}1"
